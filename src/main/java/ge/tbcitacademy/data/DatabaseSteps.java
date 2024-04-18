@@ -10,7 +10,8 @@ public class DatabaseSteps {
 //    }
     public DatabaseSteps createPhoneTable(){
         try(Connection conn = MSSQLConnection.connect()) {
-            String createPhonesQuery = "CREATE TABLE Phones (" +
+            String createPhonesQuery = "DROP TABLE if exists Phones;" +
+                    "CREATE TABLE Phones (" +
                     "phoneNumber VARCHAR(20) PRIMARY KEY, " +
                     "ownerId INT, " +
                     "CONSTRAINT FK_Phones_RegistrationData FOREIGN KEY (ownerId) REFERENCES RegistrationData(id)" +
